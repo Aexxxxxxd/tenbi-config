@@ -1,18 +1,18 @@
-def conv(s, x):
-    ans = 0
-    for ch in s:
-        ich = x if ch == 'x' else int(ch)
-        ans = ans * 94 + ich
-    return ans
-
-for x in range(93, -1, -1):
-    n1 = conv('450x93', x)
-    n2 = conv('879x37', x)
-    n3 = conv('285x56', x)
-    n = n1 + n2 + n3
-    if n % 93 == 0:
-        print(n // 31)
-        break
-
+total_sum = 0
+for x in range(3000):
+    value = 12 * (19 ** 12) + 9 * (19 ** 9) + 5 * (19 ** 5) - x # Формат умножение > число > степень
+    digits = []
+    temp = value
+    while temp > 0:
+        digits.append(temp % 19) # 19 = СИс
+        temp //= 19
+    digits.reverse()
+    zero_count = 0
+    for d in digits:
+        if d == 0:
+            zero_count += 1
+    if zero_count % 2 == 0:
+        total_sum += x
+print(total_sum)
 
 
